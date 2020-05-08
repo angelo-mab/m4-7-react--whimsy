@@ -5,13 +5,24 @@ import styled from 'styled-components';
 import LikeButton from '../LikeButton';
 
 import Action from './Action';
+import Stat from './Stat';
+import SpacerGif from '../SpacerGif';
 import TweetActionIcon from './TweetActionIcon';
+import { format } from 'date-fns';
 
 const propTypes = {
   displayName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   avatarSrc: PropTypes.string.isRequired,
   tweetContents: PropTypes.string.isRequired,
+  timestamp: PropTypes.object.isRequired,
+  numOfLikes: PropTypes.number.isRequired,
+  numOfRetweets: PropTypes.number.isRequired,
+  isLikedByCurrentUser: PropTypes.bool.isRequired,
+  isRetweetedByCurrentUser: PropTypes.bool.isRequired,
+  handleToggleLike: PropTypes.func.isRequired,
+  handleToggleRetweet: PropTypes.func.isRequired,
+
 };
 
 const Tweet = ({
@@ -39,6 +50,16 @@ const Tweet = ({
 
       <TweetContents>{tweetContents}</TweetContents>
 
+      <Timestamp>{format(timestamp, 'h:MM A MMM Mo, YYYY')}</Timestamp>
+
+      <Divider />
+
+      <Stats>
+        <Stat num={numOfRetweets} suffix="Retweets" />
+        <SpacerGif size={32} />
+        <Stat num={numOfLikes} suffix="Likes" />
+      </Stats>
+
       <Divider />
 
       <Actions>
@@ -56,6 +77,7 @@ const Tweet = ({
           color="rgb(23, 191, 99)"
           size={40}
           onClick={handleToggleRetweet}
+          isOn={isRetweetedByCurrentUser}
         >
           <TweetActionIcon
             kind="retweet"

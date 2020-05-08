@@ -129,10 +129,11 @@ const App = ({ children = 'Hello' }) => {
   );
 };
 
-render(<Demos.AnimationEx2 />);
-// render(<App />)
+// render(<Demos.AnimationEx2 />);
+render(<App />)
 
 const Button = styled.button`
+  cursor: pointer; 
   position: relative;
   width: 300px;
   height: 80px;
@@ -147,6 +148,11 @@ const ButtonLayer = styled.div`
   top: 0;
   left: 0;
   border-radius: 4px;
+  transition: transform 500mx linear;
+
+  &:hover{
+    transform: translate(-10px, -10px);
+  }
 `;
 
 const Surface = styled(ButtonLayer)`
@@ -206,7 +212,7 @@ const Bulb = styled.div`
 `;
 
 const On = styled(Bulb)`
-  z-index: 1;
+  z-index: 2;
   background: linear-gradient(180deg, #ffea00, #ffb200);
   box-shadow: 0px 5px 25px hsla(42deg, 100%, 50%, 0.8);
   transition: opacity 450ms;
@@ -219,7 +225,7 @@ const Off = styled(Bulb)`
 
 const Gloss = styled.div`
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 10%;
   left: 0;
   right: 0;
