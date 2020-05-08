@@ -4,40 +4,50 @@ import styled, { keyframes } from 'styled-components';
 import Particle from '../Particle';
 
 const ConfettiPieces = ({ angle, distance, color }) => {
- const size = 10;
+  const size = 10;
 
- return (
-  <CenteredWithinParent>
-   <Particle angle={angle} startDistance={distance * .55} endDistance={distance} >
+  return (
+    <CenteredWithinParent>
+      <Particle angle={angle} startDistance={distance * .55} endDistance={distance} >
 
-    <Circle style={{ width: size, height: size, background: color, }} />
+        <Circle style={{ width: size, height: size, background: color, }} />
 
-   </Particle>
-  </CenteredWithinParent>
- );
+      </Particle>
+    </CenteredWithinParent>
+  );
 };
 
-// const warmKeyframe= keyframes`
-// `;
-// const midKeyframe = keyframes`
-// `;
-// const coolKeyframe = keyframes`
-// `;
-// const getKeyframeforId = id => {
-//  switch (id) {
-//   case 'warm':
-//    return warmKeyframe;
+const warmKeyframe = keyframes`
+  0% { background: pink;}
+  50% { background: yellow;}
+  100% {background: pink}
+`;
+const midKeyframe = keyframes`
+  0% { background: blue; }
+  50% { background: hotpink; }
+  100% { background: blue; }
+`;
+const coolKeyframe = keyframes`
+  0% { background: turquoise; }
+  50% { background: violet; }
+  100% { background: turquoise; }
+`;
 
-//   case 'mid':
-//    return midKeyframe;
+const getKeyframeforId = id => {
+  switch (id) {
+    case 'warm':
+      return warmKeyframe;
 
-//   case 'cool':
-//    return coolKeyframe;
+    case 'mid':
+      return midKeyframe;
 
-//   default:
-//   //do nothing
-//  }
-// }
+    case 'cool':
+      return coolKeyframe;
+
+    default:
+    //do nothing
+  }
+}
 
 const CenteredWithinParent = styled.div`
 position: absolute;

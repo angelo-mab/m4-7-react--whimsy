@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const PoppingCircle = ({ size, color }) => {
- return <Wrapper style={{ width: size, height: size, background: color }} />
+  return <Wrapper style={{ width: size, height: size, background: color }} />
 };
 
 const scale = keyframes`
